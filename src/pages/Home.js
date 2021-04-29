@@ -26,7 +26,7 @@ const Home = () => {
 
   return (
     <View>
-      <Header title='Pessoas' />
+      {/* <Header title='Pessoas' /> */}
       { !loading 
         ? peoples.map((item, index) => (
           <PeopleList key={ index } name={ item.name } picture={ item.picture }/>

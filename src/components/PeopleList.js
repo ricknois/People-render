@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 
 const PeopleList = (props) => {
   const { name, picture } = props;
@@ -7,16 +7,18 @@ const PeopleList = (props) => {
   const { thumbnail } = picture;
 
   return (
-    <View style={ styles.container }>
-        <View style={ styles.line }>
-          <Image style={ styles.avatar } source={{ uri: thumbnail, }} />
-          <Text
-            style={ styles.lineText }
-          >
-            {`${title} ${first} ${last}`}
-          </Text>
-        </View>
-    </View>
+    <TouchableOpacity>
+      <View style={ styles.container }>
+          <View style={ styles.line }>
+            <Image style={ styles.avatar } source={{ uri: thumbnail, }} />
+            <Text
+              style={ styles.lineText }
+            >
+              {`${title} ${first} ${last}`}
+            </Text>
+          </View>
+      </View>
+    </TouchableOpacity>
   );
 };
 
