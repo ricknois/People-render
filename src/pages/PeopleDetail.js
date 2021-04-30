@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Image, StyleSheet } from 'react-native'
 import Line from '../components/Line'
 
 const PeopleDetail = (props) => {
@@ -14,10 +14,10 @@ const PeopleDetail = (props) => {
       />
       <View style={ styles.detailContainer }>
         <Line label="Email:" content={people.email}/>
-        <Line label="Cidade:" content={people.location.city}/>
-        <Line label="Estado:" content={people.location.state}/>
-        <Line label="Tel::" content={people.phone}/>
-        <Line label="Cel:" content={people.cell}/>
+        <Line label="City:" content={people.location.city}/>
+        <Line label="State:" content={people.location.state}/>
+        <Line label="Tel:" content={people.phone}/>
+        <Line label="Cell:" content={people.cell}/>
         <Line label="Nat:" content={people.nat}/>
       </View>
     </View>

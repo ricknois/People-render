@@ -25,7 +25,11 @@
     "react-navigation": "^4.4.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0"
+    "@babel/core": "^7.9.0",
+    "eslint": "^7.25.0",
+    "eslint-config-trybe-frontend": "^1.2.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-native": "^3.10.0"
   },
   "private": true
 }
