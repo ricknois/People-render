@@ -1,21 +1,56 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Home from './src/pages/Home';
+import PeopleDetail from './src/pages/PeopleDetail';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={ HeaderDefault }
+      >
+        <Stack.Screen
+          name="Home"
+          component={ Home }
+          options={{ title: 'People' }}
+        />
+        <Stack.Screen
+          name="PeopleDetail"
+          component={ PeopleDetail }
+          options={ (navigation) => PeopleDetailHeader(navigation) }
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const HeaderDefault = {
+  headerTintColor: 'white',
+  headerStyle: {
+    backgroundColor: '#6ca2f7',
+    borderBottomWidth: 1,
+    borderBottomColor: '#C5C5C5',
   },
-});
+  headerTitleStyle: {
+    color: 'white',
+    fontSize: 30,
+    flexGrow: 1,
+    textAlign: 'center',
+  }
+}
+
+const PeopleDetailHeader = ({ route }) => {
+  const { name } = route.params;
+  
+  return ({
+    title: name.first,
+    headerTitleStyle: {
+      color: 'white',
+      fontSize: 30,
+  }
+  });
+};
