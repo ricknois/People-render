@@ -51,9 +51,9 @@ It was developed to improve my react native skills
 ## Layout
 
 <p align="center">
-  <img alt="People" title="#People" src="./assets/home-mobile.png" width="200px">
+  <img alt="People" title="#People" src="./assets/home-mobile.jpeg" width="200px">
 
-  <img alt="People" title="#People" src="./assets/detalhes-mobile.svg" width="200px">
+  <img alt="People" title="#People" src="./assets/details-mobile.jpeg" width="200px">
 </p>
 
 ---
