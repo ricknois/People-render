@@ -1,13 +1,18 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 
 const PeopleList = (props) => {
-  const { name, picture } = props;
+  const { name, picture, people } = props;
   const { title, first, last } = name;
   const { thumbnail } = picture;
 
+  const navigation = useNavigation();
+
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={ () => {
+      navigation.navigate('PeopleDetail', { name: name, people: people });
+    } }>
       <View style={ styles.container }>
           <View style={ styles.line }>
             <Image style={ styles.avatar } source={{ uri: thumbnail, }} />

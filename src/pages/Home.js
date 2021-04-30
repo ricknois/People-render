@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native'
+import { View, Text, FlatList, ActivityIndicator, StyleSheet } from 'react-native'
 import axios from 'axios';
 
-import Header from '../components/Header';
+import { StatusBar } from 'expo-status-bar';
 import PeopleList from '../components/PeopleList';
 
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const [peoples, setPeoples] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
 
   const fetchNames = () => {
-     axios
-     .get('https://randomuser.me/api/?nat=br&results=5')
-     .then(response => {
-       const { results } = response.data;
-       setPeoples(results);
-       setLoading(false);
-     })
+    setLoading(true);
+      axios
+      .get('https://randomuser.me/api/?nat=us&results=20')
+      .then(response => {
+        const { results } = response.data;
+        setPeoples(results);
+        setLoading(false);
+      }).catch(error => {
+        setLoading(false);
+        setError(true);
+      });
   };
 
   useEffect(() => {
@@ -25,15 +31,36 @@ const Home = () => {
   }, [])
 
   return (
-    <View>
-      {/* <Header title='Pessoas' /> */}
-      { !loading 
-        ? peoples.map((item, index) => (
-          <PeopleList key={ index } name={ item.name } picture={ item.picture }/>
-        ))
-        : <Text>Carregando...</Text>}
+    <View style={styles.container}>
+      { loading
+        ? <ActivityIndicator size="large" color="#6ca2f7"/>
+        : error
+        ? <Text style={styles.error}>Oops ... Something went wrong :(</Text>
+        : <FlatList
+            data={ peoples }
+            renderItem={({ item }) => (
+              <PeopleList
+                name={ item.name }
+                picture={ item.picture }
+                people={ item }
+            />
+            )}
+          keyExtractor={ item => item.cell }/>
+         }
+        <StatusBar />
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  error: {
+    color: 'red',
+    alignSelf: 'center',
+  },
+});
 
 export default Home
