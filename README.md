@@ -43,7 +43,7 @@ It was developed to improve my react native skills
 ## Features
 
 - [x] Users have access to the mobile application, where they can:
-   - [x] navegue na lista para ver as pessoas aleatórias
+   - [x] browse the list to see random people
    - [x] see the datails of a specific people
 
 ---
