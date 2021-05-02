@@ -44,7 +44,7 @@ It was developed to improve my react native skills
 
 - [x] Users have access to the mobile application, where they can:
    - [x] browse the list to see random people
-   - [x] see the datails of a specific people
+   - [x] see the details of a specific people
 
 ---
 
